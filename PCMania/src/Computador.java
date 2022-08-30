@@ -4,14 +4,13 @@ public class Computador {
     MemoriaUSB memousb;
     SistemaOperacional so;
     HardwareBasico hb;
-    boolean tem;
 
-
-    public Computador(String marca, float preco, String nomesop, int tiposop, String nomehard, float capahard , boolean tem)
+    public Computador(String marca, float preco, String nomesop, int tiposop, String nomehard, float capahard, MemoriaUSB memousb)
     {
         this.marca=marca;
         this.preco=preco;
-        this.tem=tem;
+        this.memousb=memousb;
+
 
         so=new SistemaOperacional(nomesop, tiposop);
         hb=new HardwareBasico(nomehard, capahard);
@@ -26,27 +25,14 @@ public class Computador {
         System.out.println("Tipo do Sistema Operacional: " +this.so.tipo);
         System.out.println("Hardware Basico: " +this.hb.nome);
         System.out.println("Capacidade do Hardware Basico: " +this.hb.capacidade);
-
-       // if(addMemoriaUSB(MemoriaUSB)==false)
-         //   System.out.println("O PC nao tem Memoria USB");
-       // else
-        //{
-          //  System.out.println("Memoria USB: "+memousb.nome);
-          //  System.out.println("Memoria USB: "+memousb.capacidade);
-       //}
+       addMemoriaUSB(this.memousb);
 
         System.out.println("================================");
     }
 
     void addMemoriaUSB(MemoriaUSB memoriaUSB)
     {
-         if(this.tem==false){
-             this.tem=true;
-         }
-
-         else
-         this.tem=false;
+        System.out.println("O PC acompanha um " + memoriaUSB.nome + " de capacidade " + memoriaUSB.capacidade + "Gb");
     }
-
 
 }
